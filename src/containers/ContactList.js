@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 
+import selectContact from '../store/actions/select_contact_action';
+
 class ContactList extends Component {
     
     constructor(props) {
@@ -15,14 +17,14 @@ class ContactList extends Component {
           return (
             <li
                 key={contact.phone}
-                onClick={() => { console.log(contact) }}
+                onClick={() => { this.props.selectContact(contact) }}
                 className='list-group-item'>{contact.name}
             </li>
           );
         });
     }
 
-    render(){
+    render() {
         return(
             <ul className = 'list-group col-sm-4'>
                 {this.renderList()}
@@ -37,4 +39,11 @@ function mapStateToProps(state) {
     };
 }
 
-export default connect(mapStateToProps)(ContactList);
+function mapDispatchToProps(dispatch) {
+    return bindActionCreators( 
+        { selectContact: selectContact },
+        dispatch
+    );
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(ContactList);
