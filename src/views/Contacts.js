@@ -1,12 +1,12 @@
 import React from 'react';
 import ContactList from '../containers/ContactList';
 import ContactDetail from '../containers/ContactDetail';
-import NavBar from '../components/NavBar';
+import Menu from '../components/Menu';
 
 const Contacts = () => {
  return (
     <div>
-        <NavBar />
+        <Menu />
         <ContactList />
         <ContactDetail />
     </div>

@@ -2,11 +2,11 @@ import React from 'react';
 import Footer from '../components/Footer';
 import AddTodo from '../containers/AddTodo';
 import VisibleTodoList from '../containers/VisibleTodoList';
-import NavBar from '../components/NavBar';
+import Menu from '../components/Menu';
 
 const Todo = () => (
   <div>
-    <NavBar />
+    <Menu />
     <AddTodo />
     <VisibleTodoList />
     <Footer />
