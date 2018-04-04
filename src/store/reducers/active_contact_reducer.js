@@ -3,6 +3,8 @@ export default function(state = null, action) {
 		case 'CONTACT_SELECTED': 
 			console.log('CONTACT_SELECTED: ', action.payload);
 			return action.payload
+		default:
+		
 	}
-	return state
+	return state;
 }
