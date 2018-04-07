@@ -1,14 +1,12 @@
 import React from 'react';
 import { Provider } from 'react-redux';
-import { createStore, applyMiddleware } from 'redux';
 
+import Store from '../store';
 import App from '../views/App';
-import reducers from '../store/reducers';
-const createStoreWithMiddleware = applyMiddleware()(createStore);
 
 const AppProvider = () => {
     return(
-        <Provider store={createStoreWithMiddleware(reducers)} >
+        <Provider store={Store} >
             <App />
         </Provider>
     );

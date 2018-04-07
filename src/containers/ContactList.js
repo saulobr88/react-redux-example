@@ -2,10 +2,12 @@ import React, { Component } from 'react';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 
+import AddContactForm from '../components/AddContactForm';
+
 import selectContact from '../store/actions/select_contact_action';
 
 class ContactList extends Component {
-    
+
     constructor(props) {
         super(props);
 
@@ -16,7 +18,7 @@ class ContactList extends Component {
         return this.props.contacts.map((contact) => {
           return (
             <li
-                key={contact.phone}
+                key={contact.id}
                 onClick={() => { this.props.selectContact(contact) }}
                 className='list-group-item'>{contact.name}
             </li>
@@ -26,9 +28,13 @@ class ContactList extends Component {
 
     render() {
         return(
-            <ul className = 'list-group col-sm-4'>
-                {this.renderList()}
-            </ul>
+            <div>
+                <AddContactForm />
+                <ul className = 'list-group col-sm-4'>
+                    {this.renderList()}
+                </ul>
+            </div>
+            
         );
     }
 }

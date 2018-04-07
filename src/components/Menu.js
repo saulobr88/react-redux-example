@@ -27,9 +27,13 @@ const Menu = () => {
               Contact List
             </NavItem>
 
+            <NavItem eventKey={4} componentClass={Link} href="/test" to="/test">
+              Test Redux Store
+            </NavItem>
+
           </Nav>
           <Nav pullRight>
-            <NavItem eventKey={4} 
+            <NavItem eventKey={5} 
               componentClass={Link} 
               href="https://github.com/saulobr88/react-redux-example"
               to="https://github.com/saulobr88/react-redux-example"

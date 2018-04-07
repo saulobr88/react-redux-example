@@ -1,16 +1,7 @@
 import React, { Component } from 'react';
-
-
-const AddButom = () => {
-    return(
-        <div className="row">
-            <div className="pull-right">
-                <button className="btn btn-primary">Add Contact</button>
-            </div>
-        </div>
-    );
-}
-
+import { connect } from 'react-redux';
+import uuidv1 from 'uuid';
+import { addContact } from '../store/actions/contacts_crud_actions';
 
 class AddContactForm extends Component {
 
@@ -19,8 +10,10 @@ class AddContactForm extends Component {
 
         this.state = {
             showForm: false,
-            addBtnTxt: 'Add Contact'
+            addBtnTxt: 'Add Contact',
+            subtmitMsg: ''
         }
+        
         this.handleSubmit = this.handleSubmit.bind(this);
         this.toggleForm = this.toggleForm.bind(this);
     }
@@ -32,8 +25,27 @@ class AddContactForm extends Component {
             this.setState( { showForm: true, addBtnTxt: 'Hide Form' });
     }
 
-    handleSubmit(){
-        console.log('handleSubmit executado');
+    handleSubmit(e){
+        e.preventDefault();        
+        if ( !this.name.value.trim() ) {
+            this.setState( { subtmitMsg: 'Name value must be provided' } );
+            return
+        }
+        if ( !this.phone.value.trim() ) {
+            this.setState( { subtmitMsg: 'Phone value must be provided' });
+            return
+        }
+
+        const newContact = {
+            id: uuidv1(),
+            name: this.name.value,
+            phone: this.phone.value
+        };
+
+        this.props.addContact(newContact); // will dispatch
+        this.name.value = '';
+        this.phone.value = '';
+        this.setState( {subtmitMsg: ''} );
     }
 
     render(){
@@ -49,6 +61,7 @@ class AddContactForm extends Component {
 
                 <div className='container' style={{ textAlign:'center'}} hidden={ !this.state.showForm } >
                     <h3>New Contact</h3>
+                    <span>{this.state.subtmitMsg}</span>
                     <form className='form-inline' onSubmit={this.handleSubmit}>
                         <div className='form-group'>
                             <label htmlFor='name'>Name:</label>
@@ -75,4 +88,10 @@ class AddContactForm extends Component {
     }
 }
 
-export default AddContactForm;
+const mapDispatchToProps = dispatch => {
+    return {
+        addContact: newContact => dispatch(addContact(newContact))
+      };
+};
+
+export default connect(null, mapDispatchToProps)(AddContactForm);
