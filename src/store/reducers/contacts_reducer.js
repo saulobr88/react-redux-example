@@ -22,6 +22,15 @@ const ContactsCrud = (state = [], action) => {
 	switch(action.type) {
 		case 'ADD_CONTACT':
 			return [...state, action.payload];
+
+		case 'DELETE_CONTACT':
+			function updateContacts(contact) {
+				if(contact.id !== action.payload.id) {
+					return contact;
+				}
+			}
+			return state.filter(updateContacts);
+
 		default: 
 			return state;
 	}
