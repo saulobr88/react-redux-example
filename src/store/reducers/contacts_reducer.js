@@ -1,3 +1,7 @@
+/* I don't use ContactsReducer anymore,
+ * just ContactsCrud, all initial information comes from
+ * store/data.js
+ */
 const ContactsReducer = () => {
 	return [{
 		"id": "1",
@@ -30,6 +34,18 @@ const ContactsCrud = (state = [], action) => {
 				}
 			}
 			return state.filter(updateContacts);
+		
+		case 'UPDATE_CONTACT':
+			/* another way to cycle through the list
+			 * ref.: https://hackernoon.com/redux-patterns-add-edit-remove-objects-in-an-array-6ee70cab2456
+			 */
+			const updatedItems = state.map(item => {
+				if(item.id === action.payload.id){
+				  return { ...item, ...action.payload }
+				}
+				return item;
+			  });
+			  return updatedItems;
 
 		default: 
 			return state;
