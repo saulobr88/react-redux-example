@@ -1,5 +1,5 @@
 import React from 'react';
-import { HashRouter as Router, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Route } from 'react-router-dom';
 
 import Home from './Home';
 import Contacts from './Contacts';
@@ -8,7 +8,7 @@ import Test from './Test';
 
 const App = () => {
     return(
-        <Router basename="/react-redux-example/">
+        <Router>
         <div className="App">
           <Route path='/' exact render={ () => <Home />} />
           <Route path='/contacts' exact render={ ()=> <Contacts />} />
