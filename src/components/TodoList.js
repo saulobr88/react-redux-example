@@ -13,7 +13,7 @@ const TodoList = ({ todos, toggleTodo }) => (
     )}
   </ul>
 );
- 
+
 TodoList.propTypes = {
   todos: PropTypes.arrayOf(
     PropTypes.shape({

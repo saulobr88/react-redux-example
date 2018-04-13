@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 
@@ -37,6 +38,16 @@ class ContactList extends Component {
             
         );
     }
+}
+
+ContactList.propTypes = {
+    contacts: PropTypes.arrayOf(
+        PropTypes.shape({
+            id: PropTypes.string.isRequired,
+            name: PropTypes.string.isRequired,
+            phone: PropTypes.string.isRequired
+          }).isRequired
+    ).isRequired
 }
 
 function mapStateToProps(state) {

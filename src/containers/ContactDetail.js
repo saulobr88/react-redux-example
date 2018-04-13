@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { deleteContact, updateContact } from '../store/actions/contacts_crud_actions';
 import selectContact from '../store/actions/select_contact_action';
@@ -138,6 +139,14 @@ class ContactDetail extends Component {
             </div>
         );
     }
+}
+
+ContactDetail.propTypes = {
+    contact: PropTypes.shape({
+        id: PropTypes.string.isRequired,
+        name: PropTypes.string.isRequired,
+        phone: PropTypes.string.isRequired
+      })
 }
 
 function mapStateToProps(state) {
