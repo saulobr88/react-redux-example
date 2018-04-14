@@ -18,5 +18,8 @@ If you would like to download the code and try it for yourself:
 3. yarn install / npm install
 4. yarn start / npm start
 
+## Live
+To see this application live, access [here](https://react-redux-saulo.netlify.com/)
+
 ## Screenshots
 more screenshots [here](https://github.com/saulobr88/react-redux-example/tree/master/screenshots)
